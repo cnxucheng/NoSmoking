@@ -43,20 +43,33 @@
     </div>
 
     <script>
-      // 获取当前路径
-      const path = window.location.pathname;
+      // 获取当前完整URL和路径
+      const currentUrl = window.location.href;
+      const currentPath = window.location.pathname;
+      const basePath = '/NoSmoking/';
       
-      // 如果是根路径，直接重定向到首页
-      if (path === '/' || path === '/404.html') {
-        window.location.replace('/');
+      console.log('Current URL:', currentUrl);
+      console.log('Current Path:', currentPath);
+      
+      // 提取相对于应用基础路径的路由
+      let targetPath = currentPath;
+      if (currentPath.startsWith(basePath)) {
+        targetPath = currentPath.substring(basePath.length - 1); // 保留开头的斜杠
+      }
+      
+      // 如果已经是根路径或404页面，直接重定向到应用首页
+      if (targetPath === '/' || targetPath === '/404.html' || targetPath === '') {
+        window.location.replace(basePath);
         return;
       }
 
-      // 保存当前路径到sessionStorage，以便应用可以恢复路由
-      sessionStorage.setItem('redirectPath', path);
+      console.log('Target path to redirect:', targetPath);
       
-      // 重定向到首页，应用会处理路由恢复
-      window.location.replace('/');
+      // 保存目标路径到sessionStorage，以便应用可以恢复路由
+      sessionStorage.setItem('redirectPath', targetPath);
+      
+      // 重定向到应用首页，应用会处理路由恢复
+      window.location.replace(basePath);
       
       // 如果重定向失败，显示错误信息
       setTimeout(() => {

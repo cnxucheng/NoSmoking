@@ -1,6 +1,6 @@
 {
   "name": "no-smoking",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "type": "module",
   "engines": {
@@ -12,7 +12,7 @@
     "preview": "vite preview --host",
     "build-only": "vite build && node copy-404.js",
     "type-check": "vue-tsc --build",
-    "deploy": "gh-pages -d dist -t true"
+    "deploy": "gh-pages -d dist"
   },
   "homepage": "https://cnxucheng.github.io/NoSmoking",
   "dependencies": {
