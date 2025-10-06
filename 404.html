@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>No Smoking - 页面重定向</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f5f5f5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+      .container {
+        background: white;
+        padding: 40px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        text-align: center;
+        max-width: 500px;
+      }
+      .loading {
+        color: #666;
+        margin-bottom: 20px;
+      }
+      .error {
+        color: #d32f2f;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="loading">正在重定向到应用...</div>
+      <div class="error" id="error" style="display: none;">
+        重定向失败，请<a href="/">点击这里</a>返回首页
+      </div>
+    </div>
+
+    <script>
+      // 获取当前路径
+      const path = window.location.pathname;
+      
+      // 如果是根路径，直接重定向到首页
+      if (path === '/' || path === '/404.html') {
+        window.location.replace('/');
+        return;
+      }
+
+      // 保存当前路径到sessionStorage，以便应用可以恢复路由
+      sessionStorage.setItem('redirectPath', path);
+      
+      // 重定向到首页，应用会处理路由恢复
+      window.location.replace('/');
+      
+      // 如果重定向失败，显示错误信息
+      setTimeout(() => {
+        document.getElementById('error').style.display = 'block';
+      }, 3000);
+    </script>
+  </body>
+</html>

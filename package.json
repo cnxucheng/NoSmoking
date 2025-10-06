@@ -10,7 +10,7 @@
     "dev": "vite --host",
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview --host",
-    "build-only": "vite build",
+    "build-only": "vite build && node copy-404.js",
     "type-check": "vue-tsc --build",
     "deploy": "gh-pages -d dist -t true"
   },
