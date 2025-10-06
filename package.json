@@ -11,8 +11,10 @@
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview --host",
     "build-only": "vite build",
-    "type-check": "vue-tsc --build"
+    "type-check": "vue-tsc --build",
+    "deploy": "gh-pages -d dist -t true"
   },
+  "homepage": "https://cnxucheng.github.io/NoSmoking",
   "dependencies": {
     "dayjs": "^1.11.18",
     "vant": "^4.0.0",
@@ -24,6 +26,7 @@
     "@types/node": "^22.18.6",
     "@vitejs/plugin-vue": "^6.0.1",
     "@vue/tsconfig": "^0.8.1",
+    "gh-pages": "^6.3.0",
     "npm-run-all2": "^8.0.4",
     "typescript": "~5.9.0",
     "vite": "^7.1.7",
